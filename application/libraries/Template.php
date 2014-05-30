@@ -12,12 +12,9 @@ class Template {
     protected $brand_name = 'Codeigniter Skeleton';
     protected $title_separator = ' | ';
     protected $ga_id = FALSE; // UA-XXXXX-X
-
     protected $layout = 'default';
-
     protected $title = FALSE;
     protected $description = FALSE;
-
     protected $metadata = array();
 
     protected $js = array();
@@ -29,8 +26,6 @@ class Template {
     private $script="";
     private $defer="";
     private $type="";
-    private $csstheme="bootstrap.min.css";
-    // private $baseview="base_view";
     private $baseview="base_view";
 
     function __construct()
@@ -281,7 +276,7 @@ class Template {
                     $style[]=$css;
                     break;
                 }
-            // $css[] = '<link rel="stylesheet" href="' . assets_url('css/' . $css_file) . '">';
+            
         }
         $style = implode('', $style);
 
@@ -303,13 +298,12 @@ class Template {
         // Let CI do the caching instead of the browser
         $this->_ci->output->cache($this->cache_lifetime);
 
-        // return $this->_ci->load->view('base_view', array(
+       
         return $this->_ci->load->view($this->baseview, array(
             'title' => $title,
             'description' => $description,
             'metadata' => $metadata,
             'js' => $javascript,
-            // 'scripts' => $scripts,
             'css' => $style,
             'body' => $body,
             'ga_id' => $this->ga_id,
